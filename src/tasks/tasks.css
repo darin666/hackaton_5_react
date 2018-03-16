@@ -15,11 +15,16 @@ body {
     margin-top: 0.5rem;
 }
 
-.task-collapse img {
+.task-collapse button {
+    float: right;
+}
+
+.task-collapse button img {
 	width: 1.5rem;
 	height: 1.5rem;
     float: right;
 }
+
 
 .task-name {
     font-weight: bold;
@@ -29,4 +34,14 @@ body {
 .task-time {
     font-weight: bold;
     float: right;
+}
+
+.task-open {
+    background-color: whitesmoke;
+	border: 1px solid lightgrey;
+	border-radius: 4px;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
