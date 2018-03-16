@@ -2,7 +2,70 @@ import React from 'react';
 import './tasks.css';
 import bottom from './img/bottom.png';
 
-export default class TaskList extends React.Component {
+export class TaskForm extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			name: "",
+			time: "",
+			description: ""
+		}
+	}
+
+	render() {
+		return (
+			<div className="post-form">
+				<label>name:
+					<input
+						type="text"
+						name="name"
+						value={this.state.name}
+						onChange={this.dataChanged.bind(this)}/>
+				</label>
+				<label>time:
+					<input
+						type="text"
+						name="time"
+						value={this.state.time}
+						onChange={this.dataChanged.bind(this)}/>
+				</label>
+                <label>description:
+					<input
+						type="text"
+						name="description"
+						value={this.state.description}
+						onChange={this.dataChanged.bind(this)}/>
+				</label>
+				<button onClick={this.sendPost.bind(this)}>send</button>
+			</div>
+		)
+	}
+
+	dataChanged(event) {
+		var newState = {};
+		newState[event.target.name] = event.target.value;
+		this.setState(newState);
+	}
+
+	sendPost() {
+		fetch('http://worklog.podlomar.org/tasks/create',
+			{
+				mode: 'no-cors',
+				method: "POST",
+				body: JSON.stringify(this.state),
+				headers: {
+					"Content-Type": "application/json"
+				}
+			}
+		).then(function(response) {
+			location.reload();
+		});
+	}
+}
+
+
+export class TaskList extends React.Component {
     constructor(props) {
 		super(props);
 
@@ -19,11 +82,11 @@ export default class TaskList extends React.Component {
                     this.setState(
                         {
                             tasks: json
-                        }
-                    );
                 }
             );
-    }
+        }
+    );
+}
 
 	render() {
 		return (
@@ -32,14 +95,13 @@ export default class TaskList extends React.Component {
                     (task) => {
                         return (
                          <Task
-                         name={task.name}
-                         time={task.time}
-                         description={task.description} />
+                            name={task.name}
+                            time={task.time}
+                            description={task.description} />
                         )
-                        }
-        )
-    }
-
+                    }
+                )
+            }
 			</div>
 		)
 	}
