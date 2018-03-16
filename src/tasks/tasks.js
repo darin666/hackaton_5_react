@@ -97,7 +97,8 @@ export class TaskList extends React.Component {
                          <Task
                             name={task.name}
                             time={task.time}
-                            description={task.description} />
+                            description={task.description}
+                            taskkey={task.key} />
                         )
                     }
                 )
@@ -147,7 +148,7 @@ class Task extends React.Component {
                         </button>
                     </div>
                 </div>
-                {this.state.isOpen && <TaskLog />}
+                {this.state.isOpen && <TaskLog taskkey={this.props.taskkey} />}
 			</div>
 		);
     }
@@ -173,7 +174,7 @@ class TaskLog extends React.Component {
     render() {
         return (
             <div>
-                <LogList />
+                <LogList taskkey={this.props.taskkey}/>
                 <LogForm />
             </div>
         )
@@ -190,35 +191,58 @@ class LogList extends React.Component {
 	}
 
     componentWillMount() {
-        fetch('http://worklog.podlomar.org//task/<key>/logs')
+        fetch('http://worklog.podlomar.org//task/' + this.props.taskkey + '/logs')
             .then(response => response.json())
             .then(
                 (json) => {
                     this.setState(
-                        {
+                    {
                         logs: json
-                }
-            );
-        }
-    );
-}
+                    }
+                );
+            }
+        );
+    }
 
     render() {
         return (
             <div className="log-list">
-                {this.state.logs.map(
+            {
+                this.state.logs.map(
                     (log) => {
                         return (
-                        <Task
+                        <Log
                             user={log.user}
-                            description={log.description} />
+                            description={log.description}
+                            hours={log.hours}
+                            />
                         )
                     }
                 )
             }
             </div>
-            )
-        }
+        )
+    }
+}
+
+class Log extends React.Component {
+    render() {
+		return (
+			<div className="log">
+			    <div className="log-description">
+                    {this.props.description}
+                </div>
+
+                <div className="log-user">
+                    {this.props.user}
+                </div>
+
+                <div className="log-hours">
+                    {this.props.hours}
+                </div>
+			</div>
+		);
+    }
 }
 
 class LogForm extends React.Component {
