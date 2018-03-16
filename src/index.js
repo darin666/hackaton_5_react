@@ -8,7 +8,9 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>Get inspired today!</h1>
+				<h1>Taskmaster 3000</h1>
+				<TaskList />
+				<TaskList />
 				<TaskList />
 			</div>
 		)

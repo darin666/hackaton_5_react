@@ -1,0 +1,24 @@
+.task {
+	background-color: white;
+	border: 1px solid lightgrey;
+	border-radius: 4px;
+	padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.task-collapse img {
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-left: 1rem;
+    margin-right: 0.25rem;
+    float: right;
+}
+
+.task-name {
+    font-weight: bold;
+}
+
+.task-time {
+    font-weight: bold;
+    float: right;
+}
