@@ -1,21 +1,29 @@
+body {
+    box-sizing: border-box;
+    background-color: azure;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+}
+
 .task {
-	background-color: white;
+	background-color: whitesmoke;
 	border: 1px solid lightgrey;
 	border-radius: 4px;
-	padding: 1rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
     margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .task-collapse img {
 	width: 1.5rem;
 	height: 1.5rem;
-	margin-left: 1rem;
-    margin-right: 0.25rem;
     float: right;
 }
 
 .task-name {
     font-weight: bold;
+    color: maroon;
 }
 
 .task-time {
