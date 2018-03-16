@@ -10,8 +10,6 @@ class App extends React.Component {
 			<div className="container">
 				<h1>Taskmaster 3000</h1>
 				<TaskList />
-				<TaskList />
-				<TaskList />
 			</div>
 		)
 	}

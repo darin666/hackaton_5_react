@@ -3,14 +3,43 @@ import './tasks.css';
 import bottom from './img/bottom.png';
 
 export default class TaskList extends React.Component {
+    constructor(props) {
+		super(props);
+
+		this.state = {
+			tasks : []
+		};
+	}
+
+    componentWillMount() {
+        fetch('http://worklog.podlomar.org/tasks')
+            .then(response => response.json())
+            .then(
+                (json) => {
+                    this.setState(
+                        {
+                            tasks: json
+                        }
+                    );
+                }
+            );
+    }
 
 	render() {
 		return (
 			<div className="task-list">
-                <Task
-                    name="Ahoj"
-                    time="5 hours"
-                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In iaculis ullamcorper eros nec mattis. Donec ultricies congue eleifend. Suspendisse suscipit auctor nibh ut lobortis. In a porttitor elit, vel sodales purus. Vestibulum luctus lacus et porttitor interdum. Mauris quis diam." />
+                {this.state.tasks.map(
+                    (task) => {
+                        return (
+                         <Task
+                         name={task.name}
+                         time={task.time}
+                         description={task.description} />
+                        )
+                        }
+        )
+    }
+
 			</div>
 		)
 	}
