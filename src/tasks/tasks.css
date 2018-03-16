@@ -1,45 +1,51 @@
 body {
     box-sizing: border-box;
-    background-color: azure;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(5, 176, 255);
+    font-family: Verdana, Tahoma, sans-serif, sans-serif;
+
     padding: 1rem;
 }
 
 .task {
-	background-color: whitesmoke;
-	border: 1px solid lightgrey;
-	border-radius: 4px;
+	background-color: rgb(255, 238, 0);
+	border: 1px solid rgb(245, 241, 17);
+	border-radius: 10px;
     padding: 1rem;
     padding-bottom: 2rem;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+
 }
 
 .task-collapse button {
     float: right;
+    border-radius: 10px;
 }
 
 .task-collapse button img {
 	width: 1.5rem;
 	height: 1.5rem;
     float: right;
+    border-radius: 10px;
 }
 
 
 .task-name {
     font-weight: bold;
-    color: maroon;
+    color: rgb(24, 21, 21);
+    border-radius: 10px;
 }
 
 .task-time {
     font-weight: bold;
     float: right;
+    border-radius: 10px;
 }
 
 .task-open {
-    background-color: whitesmoke;
-	border: 1px solid lightgrey;
-	border-radius: 4px;
+    background-color: rgb(240, 83, 10);
+	border: 1px solid rgb(236, 47, 14);
+	border-radius: 10px;
     padding: 1rem;
     padding-bottom: 2rem;
     margin-bottom: 0.5rem;
