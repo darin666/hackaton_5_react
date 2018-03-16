@@ -2,12 +2,54 @@ import React from 'react';
 import './tasks.css';
 import bottom from './img/bottom.png';
 
-class Task extends React.Component {
+export class Task extends React.Component {
+    constructor(props) {
+		super(props);
+
+		this.state = {
+			loaded: false
+		};
+	}
+
+	componentWillMount() {
+		fetch('http://worklog.podlomar.org/tasks')
+			.then(response => response.json())
+			.then(
+				(json) => {
+					this.setState(
+						{
+							tasks: json
+						}
+					);
+				}
+			);
+	}
+
 	render() {
 		return (
+			<div className="container">
+				{
+					this.state.tasks.map(
+						(task) => {
+							return (
+								<Task
+									name={task.name}
+									description={task.description} />
+							)
+						}
+					)
+				}
+			</div>
+		)
+	}
+}
+
+class Task extends React.Component {
+    render() {
+		return (
 			<div className="task">
-				<div className="task-title">
-					{this.props.title}
+				<div className="task-name">
+					{this.props.name}
 				</div>
 
 				<div className="task-time">
